@@ -35,6 +35,7 @@ function returnFromGarage(){const back=progress.garageReturn||{chapter:1,word:0,
 function bindGarageUI(){
  const placements=[['garageIntro','#intro .button-row','🛠 Construir mi coche'],['garageMenu','#map .menu-actions','🛠 Taller del coche']];
  placements.forEach(([id,selector,text])=>{let button=document.getElementById(id);if(!button){button=document.createElement('button');button.id=id;button.className='secondary';button.textContent=text;document.querySelector(selector).appendChild(button)}button.onclick=()=>{started=true;startGarage()}});
+ const wordListen=$('listen').onclick;$('listen').onclick=()=>{if(quizMode==='garageInstall'){const task=garageData().find(t=>t.en===currentWord.en);speak(task?task.hint:currentWord.en)}else wordListen()};
  document.title='English Quest 0.4 — La gran aventura';const label=document.querySelector('#intro .eyebrow');if(label)label.textContent='English Quest 0.4';
 }
 
